@@ -1,8 +1,8 @@
 from django.db import models
 
-
 class Users(models.Model):
     pseudo_user = models.CharField(max_length=100,primary_key=True)
+    #password_user = models.CharField(max_length=100)
     email_user = models.EmailField(max_length=254)
     tel_user = models.IntegerField()
     date_user = models.DateTimeField(auto_now_add=True)
@@ -57,4 +57,3 @@ class Photo(models.Model):
 
     def __str__(self):
         return "%s %s %s %s" % (self.album_pseudo, self.photo_type, self.photo_comment, self.photo_date)
-
