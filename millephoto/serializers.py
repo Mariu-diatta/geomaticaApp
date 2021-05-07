@@ -6,17 +6,17 @@ from .models import Users, Album,Photo
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model=Users
-        fields=['pseudo_user','photo_user','passwordUser','email_user','tel_user']
+        fields=['user_pseudo','user_email','user_tel','user_phone','user_passe','user_comment']
 
 #Serialisation de la classe Album
 class AlbumSerializer(serializers.ModelSerializer):
     class Meta:
         model=Album
-        fields=['pseudo_user','album_pseudo','album_titre','album_label','album_picture','album_type']
+        fields=['album_pseudo','album_titre','album_type','album_photo','album_label']
 
 #serialisation model photo
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model=Photo
-        fields=['photo_taille','album_pseudo','photo_type','photo_comment','photo_coord']
+        fields=['photo','photo_type','photo_label','photo_coord','album_pseudo','user_pseudo']
 
