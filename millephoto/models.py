@@ -2,7 +2,7 @@ from django.db import models
 
 class Users(models.Model):
     pseudo_user = models.CharField(max_length=100,primary_key=True)
-    #password_user = models.CharField(max_length=100)
+    passwordUser = models.CharField(max_length=100,default=True)
     email_user = models.EmailField(max_length=254)
     tel_user = models.IntegerField()
     date_user = models.DateTimeField(auto_now_add=True)
@@ -29,8 +29,8 @@ class Album(models.Model):
     album_date = models.DateTimeField(auto_now_add=True)
 
     # Metadonnee
-    class Meta:
-        ordering = ['album_pseudo', '-album_date']
+    #class Meta:
+       # ordering = ['album_pseudo', '-album_date']
 
     def __str__(self):
         return "%s %s %s" % (self.album_titre, self.album_label, self.album_date)
@@ -44,7 +44,7 @@ class Photo(models.Model):
         (6, 'NATURE'),
         (7, 'FUN'),
     ]
-    photo_taille = models.ImageField(upload_to="images/", blank=False, null=False, height_field=40, width_field=50)
+    photo_taille = models.ImageField(upload_to="images/", blank=False, null=False)
     album_pseudo = models.ForeignKey(Album, on_delete=models.CASCADE)
     photo_type = models.CharField(max_length=100, choices=PHOTO_CHOIX)
     photo_comment = models.TextField(max_length=200, blank=False)
@@ -52,8 +52,8 @@ class Photo(models.Model):
     photo_date = models.DateTimeField(auto_now_add=True)
 
     # Metadonnee
-    class Meta:
-        ordering = ['album_pseudo', '-photo_date']
+    #class Meta:
+        #ordering = ['album_pseudo', '-photo_date']
 
     def __str__(self):
         return "%s %s %s %s" % (self.album_pseudo, self.photo_type, self.photo_comment, self.photo_date)

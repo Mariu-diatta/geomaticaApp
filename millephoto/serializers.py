@@ -5,7 +5,7 @@ from .models import Users, Album,Photo
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model=Users
-        fields=['pseudo_user','password_user','email_user','tel_user']
+        fields=['pseudo_user','passwordUser','email_user','tel_user']
 
 #Serialisation de la classe Album
 class AlbumSerializer(serializers.ModelSerializer):
