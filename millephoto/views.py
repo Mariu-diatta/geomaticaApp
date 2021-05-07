@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
-
 from .models import Users,Album,Photo
 from .serializers import UsersSerializer,AlbumSerializer,PhotoSerializer
 from rest_framework.decorators import api_view
@@ -30,8 +29,8 @@ def AlbumList(request):
 
     if request.method=='GET':
         albums=Album.objects.all()
-        albums_serial=AlbumSerializer(Album,many=True)
-        return JsonResponse(albums_serial.data, safe=False)
+        albums_serial=AlbumSerializer(albums,many=True)
+        return Response(albums_serial.data)
 
     elif request.method=='POST':
         data1_serial=AlbumSerializer(data=request.data1)
@@ -46,8 +45,8 @@ def PhotoList(request):
 
     if request.method=='GET':
         photos=Photo.objects.all()
-        photos_serial=AlbumSerializer(Photo,many=True)
-        return  JsonResponse(photos_serial.data,safe=False)
+        photos_serial=AlbumSerializer(photos,many=True)
+        return  Response(photos_serial.data)
 
     elif request.method=='POST':
         data2_serial=AlbumSerializer(data=request.data2)
